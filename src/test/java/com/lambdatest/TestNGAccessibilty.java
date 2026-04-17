@@ -31,19 +31,16 @@ public class TestNGAccessibilty {
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
-        caps.setCapability("performance",true);
+        caps.setCapability("performance", true);
         caps.setCapability("network", true);
         caps.setCapability("console", true);
         caps.setCapability("video", true);
         caps.setCapability("w3c", true);
         caps.setCapability("accessibility", true);
-        //caps.setCapability("accessibility.wcagVersion", "wcag21a");
+        // caps.setCapability("accessibility.wcagVersion", "wcag21a");
         caps.setCapability("accessibility.bestPractice", true);
         caps.setCapability("accessibility.needsReview", true);
-        caps.setCapability("smartUI.project",  "par");
-
-
-
+        caps.setCapability("smartUI.project", "hjsblogger");
 
         String[] Tags = new String[] { "Feature", "Tag", "Moderate" };
         caps.setCapability("tags", Tags);
@@ -51,15 +48,14 @@ public class TestNGAccessibilty {
         driver = new RemoteWebDriver(new URL("http://" + username + ":" + authkey + hub), caps);
     }
 
-
     @Test
     public void basicTest() throws InterruptedException {
         String spanText;
         System.out.println("Loading Url");
 
-        driver.get("https://www.google.com");
+        driver.get("https://lambdatest.github.io/sample-todo-app/");
 
-        //driver.executeScript("smartui.takeScreenshot({'screenshotName':'home-page'})");
+        // driver.executeScript("smartui.takeScreenshot({'screenshotName':'home-page'})");
 
         Thread.sleep(2000);
 
@@ -190,7 +186,7 @@ public class TestNGAccessibilty {
 
         // Let's also assert that the todo we added is present in the list.
 
-        spanText = driver.findElement    (By.xpath("/html/body/div/div/div/ul/li[9]/span")).getText();
+        spanText = driver.findElement(By.xpath("/html/body/div/div/div/ul/li[9]/span")).getText();
         Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
         Status = "passed";
         Thread.sleep(150);

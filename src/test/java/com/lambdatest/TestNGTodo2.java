@@ -32,16 +32,14 @@ public class TestNGTodo2 {
         caps.setCapability("build", "TestNG With Java");
         caps.setCapability("name", m.getName() + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
-        caps.setCapability("performance",true);
+        caps.setCapability("performance", true);
         caps.setCapability("network", true);
         caps.setCapability("console", true);
         caps.setCapability("performance", true);
-         caps.setCapability("accessibility", true);
-        
-        caps.setCapability("accessibility.bestPractice", true);
-        caps.setCapability("accessibility.needsReview", true);
-        
-        
+        // caps.setCapability("accessibility", true);
+
+        // caps.setCapability("accessibility.bestPractice", true);
+        // caps.setCapability("accessibility.needsReview", true);
 
         caps.setCapability("commandLog", true);
         caps.setCapability("systemLog", true);
@@ -54,7 +52,7 @@ public class TestNGTodo2 {
         driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
     }
 
-       @Test
+    @Test
     public void basicTest() throws InterruptedException {
         String spanText;
         System.out.println("Loading Url");
@@ -70,18 +68,16 @@ public class TestNGTodo2 {
         System.out.println("Checking Box");
         driver.findElement(By.name("li3")).click();
 
-     
-
         driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
         driver.findElement(By.id("addbutton")).click();
 
-       
         Status = "passed";
         Thread.sleep(800);
 
         System.out.println("TestFinished");
 
     }
+
     @AfterMethod
     public void tearDown() {
         driver.executeScript("lambda-status=" + Status);
